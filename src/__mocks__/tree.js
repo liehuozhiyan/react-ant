@@ -1,7 +1,7 @@
 export default ({fetchMock, delay, mock, toSuccess, toError}) => {
   return {
     // 组织机构
-    '/api/tree/getDept': (options) => {
+    '/cdmsA/tree/getDept': (options) => {
       return toSuccess([{
         title: '经理',
         key: '0-0',
@@ -39,7 +39,7 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
       }], 400)
     },
     // 异步树
-    '/api/tree/getAsyncData': (options) => {
+    '/cdmsA/tree/getAsyncData': (options) => {
       let key = '0';
       if (options.body) {
         key = JSON.parse(options.body);
@@ -60,7 +60,7 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
         }
       ], 400)
     },
-    '/api/tree/getAsyncSearchData': (options) => {
+    '/cdmsA/tree/getAsyncSearchData': (options) => {
       let title = '0';
       if (options.body) {
         const data = JSON.parse(options.body);
@@ -74,7 +74,7 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
       ], 400)
     },
     // 异步select tree
-    '/api/tree/getAsyncTreeSelect': (options) => {
+    '/cdmsA/tree/getAsyncTreeSelect': (options) => {
       let key = '0';
       if (options.body) {
         key = JSON.parse(options.body);
@@ -99,7 +99,7 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
       ], 400)
     },
     // 省市区数据
-    '/api/tree/getData': (options) => toSuccess(
+    '/cdmsA/tree/getData': (options) => toSuccess(
       [
         {
           key: "123123",

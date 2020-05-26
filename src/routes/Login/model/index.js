@@ -16,27 +16,45 @@ export default {
       return history.listen(({ pathname }) => {
         if (pathname.indexOf('/sign/login') !== -1) {
           $$.removeStore('user');
+          $$.removeStore('token');
         }
       });
     }
   },
 
   effects: {
-    *login({ payload }, { call, put }) {
-      try {
-        const { status, message, data } = yield call(login, payload);
-        if (status) {
-          $$.setStore('user', data);
-          yield put(routerRedux.replace('/'));
-        } else {
-          yield put({
-            type: 'loginError',
-            payload: { message }
-          });
+    *login({ payload, success }, { call, put }) {
+      const { code, msg, root, token } = yield call(login, payload);
+      yield call(success, code, msg);
+      if (code === "200") {
+        //登录成功，缓存当前登录用户
+        $$.setStore('user', root);
+
+        //登录成功，缓存token
+        $$.setStore('token', token);
+
+        //登录成功，缓存权限
+        let authCodes = {};
+
+        const privilegeList = root.role.privilegeList;
+
+        privilegeList.map(privilege => {
+          authCodes[privilege.authCode] = privilege;
+        });
+
+        $$.setStore('authCodes', authCodes);
+
+        if (root.clientColumns) {
+          let clientColumns = JSON.parse(root.clientColumns);
+          $$.setStore('unDisplays', clientColumns.unDisplays);
+          $$.setStore('unWidth', clientColumns.unWidth);
         }
-      } catch (e) {
+
+        yield put(routerRedux.replace('/'));
+      } else {
         yield put({
-          type: 'loginError'
+          type: 'loginError',
+          payload: { msg }
         });
       }
     },

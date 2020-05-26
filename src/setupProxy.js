@@ -5,14 +5,23 @@ const proxy = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(
-    proxy('/api/sub', {
-      target: 'http://localhost:8080',
+    proxy('/cdmsA', {
+      target: 'http://192.168.0.105:8888/cdmsA/',
       changeOrigin: true,
       pathRewrite: {
-        '^/api': ''
+        '^/cdmsA': ''
       }
     })
   );
+  // app.use(
+  //   proxy('/api/sub', {
+  //     target: 'http://localhost:8080',
+  //     changeOrigin: true,
+  //     pathRewrite: {
+  //       '^/api': ''
+  //     }
+  //   })
+  // );
   // app.use(
   //   proxy('/api', {
   //     target: 'http://aaa:1000',

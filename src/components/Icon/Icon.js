@@ -18,9 +18,9 @@ class Icon extends React.Component {
   };
 
   static defaultProps = {
-    prefixCls: 'antui-icon',
+    prefixCls: 'iconfont',
     className: '',
-    font: 'ad'
+    font: ''
   };
 
   render() {
@@ -34,18 +34,28 @@ class Icon extends React.Component {
       spin,
       ...props
     } = this.props;
-    const cn = classnames(
+    let cn = '';
+    if (/^&#x.+;$/.test(type)) {
+      cn = classnames(
+        prefixCls,
+        {
+          [font]: font,
+          [font + '-' + type]: font && type,
+          spin
+        },
+        className
+      );
+      return <i className={cn} {...props} dangerouslySetInnerHTML = {{ __html: type }} />
+    }
+    cn = classnames(
       prefixCls,
       {
         [font]: font,
         [font + '-' + type]: font && type,
         spin
       },
-      className
+      'icon-' + className
     );
-    if (/^&#x.+;$/.test(type)) {
-      return <i className={cn} {...props} dangerouslySetInnerHTML = {{ __html: type }} />
-    }
     return antd ? (
       <AntdIcon type={type} className={className} spin={spin} {...props}>
         {children}
@@ -55,6 +65,11 @@ class Icon extends React.Component {
         {children}
       </i>
     );
+    // return antd ? null : (
+    //   <i className={cn} {...props}>
+    //     {children}
+    //   </i>
+    // );
   }
 }
 

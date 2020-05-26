@@ -11,6 +11,7 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/iconfont/iconfont.css?version=7" rel="stylesheet" type="text/css">
     <script>
       // Polyfills IE 10
       if (Function('/*@cc_on return document.documentMode===10@*/')()){
@@ -43,5 +44,21 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script type="text/javascript" src="%PUBLIC_URL%/locales/zh-CN.js?version=7"></script>
+    <script type="text/javascript" src="%PUBLIC_URL%/locales/en-US.js?version=7"></script>
+    <script>
+      window.pathnameinit = '';
+      window.contextPath = "/index.html";
+      // 国际化
+      var languageType = window.localStorage.languageType;
+      // 1代表中文 ，2 代表英文
+      if(languageType === "1"){
+        window.language = zh_CN;
+      }else if(languageType === "2"){
+        window.language = en_US;
+      }else{
+        window.language = zh_CN;
+      }
+    </script>  
   </body>
 </html>

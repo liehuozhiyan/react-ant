@@ -1,4 +1,4 @@
-// http://www.wheresrhys.co.uk/fetch-mock/api
+// http://www.wheresrhys.co.uk/fetch-mock/cdmsA
 import packMock from '@/utils/packMock';
 import user from './user';
 import crud from './crud';

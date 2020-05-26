@@ -17,14 +17,37 @@ class Login extends Component {
     e.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {
+        let password = form.getFieldValue('password');
+        let forge = require('node-forge');
+        //md5加密
+        let md = forge.md.md5.create();
+        md.update(password);
+        let md5Password = md.digest().toHex();
+        let param = values;
+        param.password = md5Password;
         dispatch({
-          type: 'login/login',
-          payload: values
+            type: 'login/login',
+            payload: values,
+            success: (code, msg) => {
+            }
         });
       }
     });
   };
-
+  
+  //校验验证码
+  checkVerificationCode = (code) => {
+    let verificationCodeArray = localStorage.getItem('verificationCode').split(",");
+    let verificationCode = '';
+    let flag = false;
+    for (let i = 0; i < verificationCodeArray.length; i++) {
+        verificationCode += String.fromCharCode(parseInt(verificationCodeArray[i]) > 57 && parseInt(verificationCodeArray[i]) < 84 ? parseInt(verificationCodeArray[i]) + 7 : (parseInt(verificationCodeArray[i]) < 57 ? parseInt(verificationCodeArray[i]) : parseInt(verificationCodeArray[i]) + 13));
+    }
+    if (code.toUpperCase() === verificationCode.toUpperCase()) {
+        flag = true;
+    }
+    return flag;
+  }
   render() {
     const { loading, form } = this.props;
     const { getFieldDecorator } = form;
@@ -40,8 +63,8 @@ class Login extends Component {
                 <span>Admin</span>
               </div>
               <FormItem>
-                {getFieldDecorator('userName', {
-                  initialValue: 'admin',
+                {getFieldDecorator('username', {
+                  initialValue: 'sa',
                   rules: [{ required: true, message: '请输入您的用户名，示例admin' }]
                 })(
                   <Input
@@ -53,7 +76,7 @@ class Login extends Component {
               </FormItem>
               <FormItem>
                 {getFieldDecorator('password', {
-                  initialValue: 'admin',
+                  initialValue: '123456',
                   rules: [{ required: true, message: '请输入您的密码，示例admin' }]
                 })(
                   <Input

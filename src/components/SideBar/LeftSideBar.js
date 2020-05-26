@@ -18,13 +18,17 @@ const SubMenu = Menu.SubMenu;
 //   icon: 'setting',
 //   icon: 'http://demo.com/icon.png',
 //   icon: <Icon type="setting" />,
-const getIcon = icon => {
+const getIcon = item => {
+  let { id, icon } = item;
+  console.log(icon, item)
   if (typeof icon === 'string' && icon.indexOf('http') === 0) {
     return <img src={icon} alt="icon" className={`sider-menu-item-img`} />;
   }
-  if (typeof icon === 'string') {
-    return <Icon type={icon} antd />;
-  }
+  if (id) {
+    return <Icon className={icon} style={{ fontSize: 15, color: '#9daabc'}}/>;
+  } else {
+		return <Icon type={icon} antd />;
+	}
   return icon;
 };
 
@@ -62,7 +66,7 @@ class LeftSideBar extends PureComponent {
    */
   getMenuItemPath = item => {
     const itemPath = this.conversionPath(item.path);
-    const icon = getIcon(item.icon);
+    const icon = getIcon(item);
     const { isMobile, onCollapse } = this.props;
     const { target, name } = item;
     // Is it a http link
@@ -99,7 +103,7 @@ class LeftSideBar extends PureComponent {
             title={
               item.icon ? (
                 <span>
-                  {getIcon(item.icon)}
+                  {getIcon(item)}
                   <span>{item.name}</span>
                 </span>
               ) : (
