@@ -20,7 +20,6 @@ const SubMenu = Menu.SubMenu;
 //   icon: <Icon type="setting" />,
 const getIcon = item => {
   let { id, icon } = item;
-  console.log(icon, item)
   if (typeof icon === 'string' && icon.indexOf('http') === 0) {
     return <img src={icon} alt="icon" className={`sider-menu-item-img`} />;
   }

@@ -20,34 +20,27 @@ class Icon extends React.Component {
   static defaultProps = {
     prefixCls: 'iconfont',
     className: '',
-    font: ''
+    font: '',
+    antdprefixCls: 'antui-icon',
+    antdclassName: '',
+    antdfont: 'ad'
   };
 
   render() {
     const {
       prefixCls,
-      type,
       className,
-      children,
       font,
+      antdprefixCls,
+      antdclassName,
+      antdfont,
+      type,
+      children,
       antd,
       spin,
       ...props
     } = this.props;
-    let cn = '';
-    if (/^&#x.+;$/.test(type)) {
-      cn = classnames(
-        prefixCls,
-        {
-          [font]: font,
-          [font + '-' + type]: font && type,
-          spin
-        },
-        className
-      );
-      return <i className={cn} {...props} dangerouslySetInnerHTML = {{ __html: type }} />
-    }
-    cn = classnames(
+    let cn = classnames(
       prefixCls,
       {
         [font]: font,
@@ -56,20 +49,24 @@ class Icon extends React.Component {
       },
       'icon-' + className
     );
-    return antd ? (
-      <AntdIcon type={type} className={className} spin={spin} {...props}>
-        {children}
-      </AntdIcon>
-    ) : (
+    // 有className 或无 antd 为自定义
+    // 无className 或有 antd 为默认
+    if (!className) {
+      cn = classnames(
+        antdprefixCls,
+        {
+          [antdfont]: antdfont,
+          [antdfont + '-' + type]: antdfont && type,
+          spin
+        },
+        'icon-' + antdclassName
+      );
+    }
+    return (
       <i className={cn} {...props}>
         {children}
       </i>
     );
-    // return antd ? null : (
-    //   <i className={cn} {...props}>
-    //     {children}
-    //   </i>
-    // );
   }
 }
 

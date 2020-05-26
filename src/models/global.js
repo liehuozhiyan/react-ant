@@ -22,6 +22,7 @@ export default modelEnhance({
       let root = user.role.menuList;
       let menus = yield call(generateMenuTree, root);
       menus = menus.concat(getMenu());
+      // menus = getMenu();
 
       if (root) {
         const loopMenu = (menu, pitem = {}) => {
