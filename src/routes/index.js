@@ -33,6 +33,10 @@ import Button from './UI/Button';
 import CRUD from './Business/CRUD';
 import CRUDDetail from './Business/CRUD/routers/Detail';
 
+
+import Playlist from './Program/Playlist';
+import PlaylistDetail from './Program/Playlist/routers/Detail';
+
 /**
  * 主路由配置
  * 
@@ -60,6 +64,10 @@ const routesConfig = app => [
     component: BasicLayout,
     indexRoute: '/dashboard',
     childRoutes: [
+      Playlist(app),
+      PlaylistDetail(app),
+
+
       Dashboard(app),
       Blank(app),
       Toolbar(app),

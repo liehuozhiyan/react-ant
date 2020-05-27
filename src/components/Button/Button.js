@@ -19,16 +19,44 @@ export default class extends React.Component {
 
   static defaultProps = {
     prefixCls: 'antui-button-tooltip',
+    cdmsPrefixCls: 'iconfont icon-'
   };
 
   render() {
-    const { tooltip, prefixCls, ...otherProps } = this.props;
+    const { 
+      tooltip, 
+      prefixCls, 
+      cdmsPrefixCls,//cdms系统定制按钮样式
+      cdmsicon,
+      ...otherProps 
+    } = this.props;
+
+    let custombutton = cdmsicon ? (
+      <Button {...otherProps}>
+        <i className={cdmsPrefixCls + cdmsicon}></i>
+        <span>{this.props.children}</span>
+      </Button>
+    ) : (
+      <Button {...otherProps}/>
+    );
+        
+    
     return tooltip ? (
       <Tooltip overlayClassName={prefixCls} title={tooltip === true ? otherProps.title : tooltip}>
-        <Button {...otherProps} />
+        {custombutton}
       </Tooltip>
     ) : (
-      <Button {...otherProps} />
+      <React.Fragment>
+        {custombutton}
+      </React.Fragment>
     );
+
+    // return tooltip ? (
+    //   <Tooltip overlayClassName={prefixCls} title={tooltip === true ? otherProps.title : tooltip}>
+    //     <Button {...otherProps} />
+    //   </Tooltip>
+    // ) : (
+    //   <Button {...otherProps} />
+    // );
   }
 }

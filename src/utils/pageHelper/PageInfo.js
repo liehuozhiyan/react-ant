@@ -54,6 +54,29 @@ export default class PageInfo {
 
   /**
    * 组装分页信息
+   * @param {Array} list list Array
+   */
+  setData(list, total) {
+    if (list) {
+      this.list = list;
+    }
+    this.total = total;
+    if(this.pageSize && this.total){
+      let total_pages = parseInt(this.total / this.pageSize, 10);
+      this.totalPages = total_pages === 0 ? total_pages : total_pages + 1;
+    }
+    return this;
+  }
+
+  requestFormat (pageData) {
+    const { pageNum, pageSize } = this;
+    this.currentPage = pageNum;
+    this.rowSize = pageSize;
+    return this;
+  }
+
+  /**
+   * 组装分页信息
    * @param {number} pageNum page number
    * @param {number} pageSize page size
    */

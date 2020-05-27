@@ -73,7 +73,7 @@ class SearchBar extends React.Component {
   cols = {
     xs: 8,
     md: 6,
-    xl: 4
+    xl: 6
   };
 
   // 内联元素默认宽

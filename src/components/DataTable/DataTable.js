@@ -238,7 +238,7 @@ class DataTable extends Component {
     // 显示行号
     if (showNum) {
       cols.unshift({
-        title: '序号',
+        title: window.language['common.orderNumber'],
         width: 50,
         dataIndex: '_num',
         ...(hasLeftFixedCol && { fixed: 'left' }),
@@ -261,7 +261,7 @@ class DataTable extends Component {
         pageSize: dataItems.pageSize,
         showSizeChanger: true,
         showQuickJumper: true,
-        showTotal: total => `共 ${total} 条`,
+        showTotal: total => `${window.language['common.total']} ${total} ${window.language['common.item']}`,
         onShowSizeChange: this.onShowSizeChange
       },
       dataItems.pageNum && { current: dataItems.pageNum },
@@ -328,7 +328,7 @@ export const Paging = ({ dataItems, onChange, ...otherProps }) => {
     current: pageNum,
     showSizeChanger: true,
     showQuickJumper: true,
-    showTotal: total => `共 ${total} 条`,
+    showTotal: total => `${window.language['common.total']} ${total} ${window.language['common.item']}`,
     onShowSizeChange: (pageNum, pageSize) => onChange({ pageNum, pageSize }),
     onChange: pageNum => onChange({ pageNum }),
     ...otherProps
