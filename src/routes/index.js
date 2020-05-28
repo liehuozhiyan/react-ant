@@ -13,7 +13,7 @@ import Login from './Login';
 import Register from './Register';
 import Dashboard from './Dashboard';
 import Blank from './Blank';
-import Iconfont from './Iconfont';
+import Iconfont from './Cdms/Iconfont';
 import Toolbar from './Widgets/Toolbar';
 import BaseComponent from './Widgets/BaseComponent';
 import Column from './Widgets/Column';

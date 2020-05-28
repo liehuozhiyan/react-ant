@@ -269,6 +269,14 @@ function getMenu(payload) {
         {
           name: 'iconfont',
           path: '/iconfont',
+        },
+        {
+          name: 'icon',
+          path: '/icon',
+        },
+        {
+          name: 'button',
+          path: '/button',
         }
       ],
     },
