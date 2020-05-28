@@ -261,6 +261,17 @@ function getMenu(payload) {
         }
       ],
     },
+    {
+      name: '自定义',
+      icon: 'bulb',
+      path: '/cdms',
+      children: [
+        {
+          name: 'iconfont',
+          path: '/iconfont',
+        }
+      ],
+    },
   ];
   // return $$.post('/user/menu', payload);
 }

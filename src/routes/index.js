@@ -13,6 +13,7 @@ import Login from './Login';
 import Register from './Register';
 import Dashboard from './Dashboard';
 import Blank from './Blank';
+import Iconfont from './Iconfont';
 import Toolbar from './Widgets/Toolbar';
 import BaseComponent from './Widgets/BaseComponent';
 import Column from './Widgets/Column';
@@ -70,6 +71,7 @@ const routesConfig = app => [
 
       Dashboard(app),
       Blank(app),
+      Iconfont(app),
       Toolbar(app),
       Column(),
       SearchBar(),
