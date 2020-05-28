@@ -272,11 +272,11 @@ function getMenu(payload) {
         },
         {
           name: 'icon',
-          path: '/icon',
+          path: '/cdmsIcon',
         },
         {
           name: 'button',
-          path: '/button',
+          path: '/cdmsButton',
         }
       ],
     },
