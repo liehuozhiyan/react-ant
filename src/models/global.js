@@ -267,16 +267,24 @@ function getMenu(payload) {
       path: '/cdms',
       children: [
         {
-          name: 'iconfont',
+          name: 'Iconfont',
           path: '/iconfont',
         },
         {
-          name: 'icon',
+          name: 'Icon',
           path: '/cdmsIcon',
         },
         {
-          name: 'button',
+          name: 'Button',
           path: '/cdmsButton',
+        },
+        {
+          name: 'Notice',
+          path: '/cdmsNotice',
+        },
+        {
+          name: 'Modal',
+          path: '/cdmsModal',
         }
       ],
     },

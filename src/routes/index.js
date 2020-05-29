@@ -16,6 +16,7 @@ import Blank from './Blank';
 import Iconfont from './Cdms/Iconfont';
 import CdmsButton from './Cdms/Button';
 import CdmsIcon from './Cdms/Icon';
+import CdmsNotice from './Cdms/Notice';
 import Toolbar from './Widgets/Toolbar';
 import BaseComponent from './Widgets/BaseComponent';
 import Column from './Widgets/Column';
@@ -76,6 +77,7 @@ const routesConfig = app => [
       Iconfont(app),
       CdmsIcon(app),
       CdmsButton(app),
+      CdmsNotice(app),
       Toolbar(app),
       Column(),
       SearchBar(),

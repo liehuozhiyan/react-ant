@@ -153,9 +153,6 @@ export default class extends BaseComponent {
           <Toolbar
             appendLeft={
               <Button.Group>
-              <Button type="primary" icon="plus" onClick={this.onAdd}>
-                {window.language['common.add']}
-              </Button>
                 <Button type="primary" cdmsicon="add-o" onClick={this.onAdd}>
                   {window.language['common.add']}
                 </Button>
