@@ -118,6 +118,7 @@ export default class extends BaseComponent {
             <pre>
               <code>
                 1. 无特殊情况请用Cdms Modal <br/>
+                2. 传送门<a href="https://ant.design/components/modal-cn/" target="_blank">ant modal</a> <br/>
               </code>
             </pre>
           </Panel>

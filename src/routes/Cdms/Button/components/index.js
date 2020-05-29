@@ -58,22 +58,11 @@ export default class extends BaseComponent {
               <code>
                 1. 无特殊情况请用Cdms Button <br/>
                 2. AntD Button 为 icon，Cdms Button 为 cdmsicon <br/>
-                3. 需要引入import Button from 'components/Button';
+                3. 需要引入import Button from 'components/Button';<br/>
+                4. 传送门<a href="https://ant.design/components/button-cn/" target="_blank">ant button</a> <br/>
               </code>
             </pre>
           </Panel>
-          {/* <Panel title="Ripple Button (Material Design)">
-            <div>
-              <Ripple>Default</Ripple>
-              <Ripple type="primary">Primary</Ripple>
-              <Ripple type="danger">Danger</Ripple>
-            </div>
-            <div>
-              <Ripple ghost>Default</Ripple>
-              <Ripple ghost type="primary">Primary</Ripple>
-              <Ripple ghost type="danger">Danger</Ripple>
-            </div>
-          </Panel> */}
         </Content>
       </Layout>
     );
