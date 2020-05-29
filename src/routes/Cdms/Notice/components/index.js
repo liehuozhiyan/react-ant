@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Layout } from 'antd';
+import { Layout, message } from 'antd';
 import BaseComponent from 'components/BaseComponent';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
@@ -52,6 +52,25 @@ export default class extends BaseComponent {
                 <span className="token keyword">antdNotice</span>.error('I‘m Hero') <br/> 
                 <span className="token keyword">antdNotice</span>.warning('I‘m Hero') <br/> 
                 <span className="token keyword">antdNotice</span>.info('I‘m Hero') <br/> 
+              </code>
+            </pre>
+          </Panel>
+          <Panel title="Antd message">
+            <Button.Group>
+              <Button onClick={_ => message.success('I‘m Hero')}>成功</Button> 
+              <Button onClick={_ => message.error('I‘m Hero')}>失败</Button> 
+              <Button onClick={_ => message.warning('I‘m Hero')}>注意</Button> 
+              <Button onClick={_ => message.info('I‘m Hero')}>通知</Button> 
+            </Button.Group>
+            <br/>
+            <pre>
+              <code>
+                <span className="token keyword"></span>
+                import {"{message}"} from 'antd';<br/>
+                <span className="token keyword">message</span>.success('I‘m Hero') <br/>
+                <span className="token keyword">message</span>.error('I‘m Hero') <br/> 
+                <span className="token keyword">message</span>.warning('I‘m Hero') <br/> 
+                <span className="token keyword">message</span>.info('I‘m Hero') <br/> 
               </code>
             </pre>
           </Panel>
