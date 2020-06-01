@@ -24,28 +24,28 @@ export default {
 
   effects: {
     *login({ payload, success }, { call, put }) {
-      const { code, msg, root, token } = yield call(login, payload);
+      const { code, msg, data, token } = yield call(login, payload);
       yield call(success, code, msg);
-      if (code === "200") {
+      if (code === "1000000") {
         //登录成功，缓存当前登录用户
-        $$.setStore('user', root);
+        $$.setStore('user', data);
 
         //登录成功，缓存token
-        $$.setStore('token', token);
+        $$.setStore('token', data.token);
 
         //登录成功，缓存权限
         let authCodes = {};
 
-        const privilegeList = root.role.privilegeList;
+        const menuList = data.menuList;
 
-        privilegeList.map(privilege => {
-          authCodes[privilege.authCode] = privilege;
+        menuList.map(menu => {
+          authCodes[menu.permissionAuthcode] = menu;
         });
 
         $$.setStore('authCodes', authCodes);
 
-        if (root.clientColumns) {
-          let clientColumns = JSON.parse(root.clientColumns);
+        if (data.clientColumns) {
+          let clientColumns = JSON.parse(data.clientColumns);
           $$.setStore('unDisplays', clientColumns.unDisplays);
           $$.setStore('unWidth', clientColumns.unWidth);
         }

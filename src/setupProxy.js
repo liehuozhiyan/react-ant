@@ -6,7 +6,7 @@ const proxy = require('http-proxy-middleware');
 module.exports = function(app) {
   app.use(
     proxy('/cdmsA', {
-      target: 'http://192.168.0.105:8888/cdmsA/',
+      target: 'http://192.168.0.105:8088/cdmsA/',
       changeOrigin: true,
       pathRewrite: {
         '^/cdmsA': ''

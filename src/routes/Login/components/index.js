@@ -23,8 +23,10 @@ class Login extends Component {
         let md = forge.md.md5.create();
         md.update(password);
         let md5Password = md.digest().toHex();
+        md5Password = password;
         let param = values;
         param.password = md5Password;
+        param.loginType = '1';
         dispatch({
             type: 'login/login',
             payload: values,
@@ -64,7 +66,7 @@ class Login extends Component {
               </div>
               <FormItem>
                 {getFieldDecorator('username', {
-                  initialValue: 'sa',
+                  initialValue: 'admin',
                   rules: [{ required: true, message: '请输入您的用户名，示例admin' }]
                 })(
                   <Input
@@ -76,7 +78,7 @@ class Login extends Component {
               </FormItem>
               <FormItem>
                 {getFieldDecorator('password', {
-                  initialValue: '123456',
+                  initialValue: '666666',
                   rules: [{ required: true, message: '请输入您的密码，示例admin' }]
                 })(
                   <Input

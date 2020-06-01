@@ -20,83 +20,15 @@ react-virtualized
 5. 运行项目：      npm start
 
 
-组件使用
-import Button from 'components/Button';
-import Icon from 'components/Icon';
-1. 按钮
-<Button type="primary" icon="plus" onClick={this.onAdd}>
-按钮新增默认
-</Button>
-<Button type="primary" cdmsicon="add-o" onClick={this.onAdd}>
-按钮新增自定义
-</Button>
-2. icon
-属性type为默认icon, className为新增icon
-<Icon type="plus" />
-<Icon className="add-o" />
-注意事项：
-1. 定义新组件，最外层最好使用示例中的嵌套结构，Layout > Content，并且为每一个路由页面起一个自已的className或id 
-如 playlist-page,这样我们写这个页面特定样式的时候从这个样式开始写，不会与其它路由页面产生冲突。
-2. 
+6. 代理配置  setupProxy.js
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+安装node  v10.20.1
+yarn global add @ant-design/codemod-v4
+antd4-codemod src
+yarn add @ant-design/compatible
 
 $ git clone https://github.com/LANIF-UI/dva-boot-admin.git
-$ cd dva-boot-admin
-// 安装依赖
-$ yarn
-// 启动
-$ yarn start
 // 打包
 $ yarn build
 // 打包带图形化分析

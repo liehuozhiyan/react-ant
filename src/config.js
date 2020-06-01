@@ -43,13 +43,18 @@ export default {
      */
     afterResponse: response => {
       const { code, msg } = response;
-      if (code === '200') {
-      } else if(code === '1003000'){
+      if (code === '1000000') {
+      } else if(code === '1001010'){
         // console.log("config afterResponse", response, info)
         //如果异常代码是1003000，表示用户会话过期，弹框退出页面
         forceHomepage();
       } else {
-        notice.error(window.language['responseCode.' + code]);
+        let content = window.language['responseCode.' + code];
+        if (content) {
+          notice.error(content);
+        }else{
+          notice.error(JSON.stringify(response));
+        }
       }
       return response;
     },
